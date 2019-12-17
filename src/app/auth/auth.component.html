@@ -1,0 +1,73 @@
+<div class="row">
+	<div class="col-sm-12 col-md-6 offset-md-3">
+		<!-- <div class="alert alert-danger" *ngIf="error">
+			<p>{{ error }}</p>
+		</div> -->
+		<!-- <app-alert
+			[message]="error"
+			*ngIf="error"
+			(closed)="onHandleError()"
+		></app-alert> -->
+		<ng-template appPlaceholder></ng-template>
+		<div
+			*ngIf="isLoading"
+			class="mx-auto"
+			style="text-align: center; max-width: 200px"
+		>
+			<app-loading-spinner></app-loading-spinner>
+		</div>
+		<form
+			#authForm="ngForm"
+			(ngSubmit)="onSubmit(authForm)"
+			*ngIf="!isLoading"
+		>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					class="form-control"
+					ngModel
+					required
+					email
+				/>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					class="form-control"
+					ngModel
+					required
+					minlength="6"
+				/>
+			</div>
+			<div class="text-right">
+				<button
+					class="btn btn-primary"
+					type="submit"
+					[disabled]="!authForm.valid"
+				>
+					{{ isLoginMode ? 'Log In' : 'Sign Up' }}
+				</button>
+			</div>
+			<hr />
+			<div>
+				<button
+					type="button"
+					class="btn btn-primary col-sm-12"
+					(click)="onSwitchMode()"
+				>
+					{{
+						isLoginMode
+							? 'New here? Sign Up'
+							: 'Already a member? Log In'
+					}}
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

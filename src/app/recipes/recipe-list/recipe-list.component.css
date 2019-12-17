@@ -1,0 +1,12 @@
+.makescroll {
+	width: 100%;
+	height: 85vh;
+	overflow-x: clip;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	margin-bottom: 0 !important;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
